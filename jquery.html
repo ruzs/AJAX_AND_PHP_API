@@ -7,6 +7,18 @@
     <title>jQuery</title>
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <script src="./app1/jquery-2.1.4.min.js"></script>
+    <style>
+      li {
+        padding: 5px 2px;
+        border: 1px solid lightgreen;
+        margin-top: -1px;
+      }
+  
+      li:hover {
+        background-color: lightcyan;
+      }
+    </style>
       <!-------引入jQuery函式庫------->
 </head>
 <body>
@@ -28,9 +40,18 @@
     //利用$.ajax()方法傳送請求並取得回應
     /* $.ajax(
       {
-        url:'',
-        type:'',
-        success:,
+        url:'https://kktix.com/events.json',
+        type:'json',
+        success:
+        function (response) {
+        console.log(response);
+        let str="";
+        response.entry.forEach((item)=>{
+          str += `<li>${item.title}</li>`;
+        })
+        console.log(str)
+        $("ul").append(str);
+      }),
         error:,
         complete:
       }
@@ -38,6 +59,14 @@
 
     
     //利用$.get()方法傳送請求並取得回應
-
+    $.get('https://kktix.com/events.json',function (response) {
+      console.log(response);
+      let str="";
+      response.entry.forEach((item)=>{
+        str += `<li>${item.title}</li>`;
+      })
+      console.log(str)
+      $("ul").append(str);
+    })
 
   </script>
